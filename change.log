@@ -1,0 +1,108 @@
+## **Java 一次编译，到处运行，是一个移植性超强的语言**
+
+**1、Java变量和类型**//java定义变量时必须初始化
+
+
+```
+int a=10;//int 是一个整型变量，占四个字节，不分系统（1个字节=8个比特）
+1、在Java数据类型中只有有符号数据《除了，，》
+2、Integer.MAX-VALUE是int最大值                  Integer.MIN_VALUE是int最小值
+3、integer是java自己的类，int对应的包装类
+```
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190925203458157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTUyMzMx,size_16,color_FFFFFF,t_70)
+
+```
+long a=10L;//L代表长整型数据；可以是小写l,但是程序可读性差。
+//long类型8个字节；long.MAX/MIN
+
+```
+
+```
+double a=12.5;//双精度浮点型数据``
+Double.MAX/MIN
+Java 中的 double 虽然也是 8 个字节, 但是浮点数的内存布局和整数差别很大, 
+不能单纯的用 2 ^ n 的形式表示数据范 围.；
+```
+
+```
+float a=12.5f;//如果定义float a=12.5;此时编译器会报错
+1、float类型在java中占4个字节
+2、由于表示的数据精度范围较小, 一般在工程上用到浮点数都 优先考虑 double, 不太推荐使用 ﬂoat.
+Float.MAX/MIN；
+```
+
+```
+char ch='A';//定义了字符类型变量；char是两个字节
+1、Java 中使用 单引号 + 单个字母 的形式表示字符字面值.
+2、计算机中的字符本质上是一个整数. *在 C 语言中使用 ASCII 表示字符, 而 Java 中使用 Unicode 表示字符. 因此一 个字符占用两个字节, 表示的字符种类更多*, 包括中文
+3、也可以使用字符表示一个汉字比如 \\
+char  ch='嗨'；
+System.out.println（ch);//此时编译器会报错
+错误: 未结束的字符文字         char ch = '鍛?';                   ^ 
+此时我们在执行 javac 时加上 -encoding UTF-8 选项即可
+javac -encoding UTF-8 Test.java （在cmd）
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190925205536562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTUyMzMx,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20190925205642954.png)![在这里插入图片描述](https://img-blog.csdnimg.cn/2019092520573312.png)
+
+
+
+
+```
+byte value=0;//定义了一个字节类型变量
+1.字节类型表示的也是整数. 只占一个字节, 表示范围较小 (-128 -> +127 ) 
+2. 字节类型和字符类型互不相干```
+
+```
+
+```
+short  value=0;//定义了一个短整型变量
+1、 short 占用 2 个字节, 表示的数据范围是 -32768 -> +32767 
+3. 这个表示范围比较小, 一般不推荐使用. 
+```
+
+```
+boolean  value=true;//定义了一个布尔型变量
+1、 boolean 类型的变量只有两种取值, true 表示真, false 表示假. 
+2、. Java 的 boolean 类型和 int 不能相互转换, 
+ boolean value = true; 
+ System.out.println(value + 1); //此时编译器就会报错，int和boolean类型不能转换
+3、. 不存在 1 表示 true, 0 表示 false 这样的用法
+4、 boolean 类型有些 JVM 的实现是占 1 个字节, 有些是占 1 个比特位, 这个没有明确规定
+```
+
+```
+String name="zhangming";//定义了一个字符串变量
+1. Java 使用 双引号 + 若干字符 的方式表示字符串字面值. 
+2. 和上面的类型不同, String 不是基本类型, 而是引用类型.
+3. 字符串中的一些特定的不太方便直接表示的字符需要进行转义.
+// 创建一个字符串 My name is "张三" String name = "My name is \"张三\""; 
+
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190925211545985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNTUyMzMx,size_16,color_FFFFFF,t_70)``
+**字符串的 + 操作, 表示字符串拼接:**
+
+```
+String a = "hello";
+String b = "world";
+String c = a + b; 
+System.out.println(c); //输出helloworld
+
+
+String str = "result = "; 
+int a = 10; 
+int b = 20;
+ String result = str + a + b; 
+ System.out.println(result); 
+ 
+// 执行结果 result = 1020 
+
+
+int a = 10;
+ int b = 20;
+ System.out.println("a = " + a + ",b = " + b) 
+ //执行结果：a=10,b=20
+```
+
+
+
