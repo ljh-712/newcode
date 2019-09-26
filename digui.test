@@ -1,0 +1,101 @@
+一、递归
+所谓递归需要满足：1.自己调用自己。
+ 2.有一个趋近于终止条件      
+二、例题
+1.求n个斐波那契数
+
+```
+#include<stdio.h>
+	int Fib(int n)
+	{
+		int f1 = 1;
+		int f2 = 1;
+		int f3 = 0;
+		int i = 0;
+		for (i = 3; i <= n; i++)
+		{
+			f3 = f1 + f2;
+			f1 = f2;
+			f2 = f3;
+
+		}
+		return f3;
+
+	}
+int main()
+{
+	int ret = Fib(25);
+		printf("%d", ret);
+		return 0;
+}
+```
+
+这里是非递归实现的，若使用递归求第50个数就很耗费时间。
+下面是递归写法`
+
+```
+int fib(int n)
+{
+	if (n == 1 || n == 2)
+	{
+		return 1;
+	}
+	else
+	{
+		return fib(n - 1) + fib(n - 2);
+	}
+}
+
+```
+
+
+
+2.求N!
+
+```
+int fun(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+	if (n > 1)
+	{
+		return n * fun(n - 1);
+	}
+}
+```
+
+```
+3.汉罗塔问题
+
+```
+#include<stdio.h>
+void move(char a, char b)
+{
+	printf("%c->%c ",a, b);
+}
+void han(int n, char a, char b, char c)
+{
+	if (n == 1)
+	{
+		move(a, c);
+	}
+	else
+	{
+		han(n - 1, a, c, b);
+		move(a, c);
+		han(n - 1, b, a, c);
+
+	}
+
+}
+int main()
+{
+	han(1, 'x', 'y', 'z');
+	printf("\n");
+	han(3, 'x' , 'y' , 'z');
+	return 0;
+}
+```
+
