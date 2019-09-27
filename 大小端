@@ -1,0 +1,54 @@
+//#include<stdio.h>
+//int Islittle()
+//{
+//	int n = 0x11223344;
+//	char * p = (char*)&n;
+//	if (*p ==0x44)
+//	{
+//		return 0;
+//	}
+//	return -1;
+//}
+//int main()
+//{
+//	int r = Islittle();
+//	if (r == 0)
+//	{
+//		printf("是小端\n");
+//	}
+//	else 
+//	{
+//		printf("是大端\n");
+//	}	
+//	return 0;
+//}
+//联合体也叫共用体，共用一块内存
+#include<stdio.h>
+union Un
+{
+	int a;
+	char ch;
+};
+int Islittle()
+{
+	union Un uu;
+	uu.a = 0x11223344;
+	if (uu.ch == 0x44)
+	{
+		return 0;
+	}
+	return 1;
+}
+int main()
+{
+	int r = Islittle();
+	if (r == 0)
+	{
+		printf("是小端\n");
+	}
+	else
+	{
+		printf("是大端\n");
+	}
+	return 0;
+}
